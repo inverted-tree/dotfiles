@@ -1,0 +1,22 @@
+# ▄▀▀ ▀█▀ ▄▀▄ █▀▄ ▄▀▀ █▄█ █ █▀▄   ▄▀▀ ▄▀▄ █▄ █ █▀ █ ▄▀ 
+# ▄██  █  █▀█ █▀▄ ▄██ █ █ █ █▀    ▀▄▄ ▀▄▀ █ ▀█ █▀ █ ▀▄█
+#
+# ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀
+[character]
+success_symbol = '[➜](bold green)'
+error_symbol   = '[✕](bold red)'
+
+[directory]
+read_only = "(read only)"
+
+[git_status]
+disabled = false
+
+[git_commit]
+commit_hash_length = 7
+tag_disabled = false
+only_detached = false
+
+[hostname]
+ssh_symbol = '＠ '
+

@@ -1,0 +1,81 @@
+// Load with --load-config examples/2.jsonc
+// Note that you must replace the image path to an existing image to display it.
+
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "iterm",
+        "source": "~/.config/fastfetch/sakurafetch.png",
+        "width": 32,
+        "height": 15
+    },
+    "display": {
+        "separator": " "
+    },
+    "modules": [
+        {
+            "type": "title"
+        },
+        {
+            "type": "custom",
+            "format": "────────────────────────"
+        },
+        {
+            "type": "os",
+            "key": "OS       ➜",
+            "keyColor": "yellow",
+            "format": "{2}"
+        },
+        {
+            "type": "kernel",
+            "key": "KERNEL   ➜",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "shell",
+            "key": "SHELL    ➜",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "packages",
+            "key": "PACKAGES ➜",
+            "keyColor": "yellow"
+        },
+        "break",
+        {
+            "type": "host",
+            "key": "HOST     ➜",
+            "keyColor": "blue"
+        },
+        {
+            "type": "display",
+            "key": "DISPLAY  ➜",
+            "keyColor": "blue"
+        },
+        {
+            "type": "disk",
+            "key": "DISK     ➜",
+            "keyColor": "blue"
+        },
+        {
+            "type": "uptime",
+            "key": "UPTIME   ➜",
+            "keyColor": "blue"
+        },
+        "break",
+        {
+            "type": "localip",
+            "key": "LAN IP   ➜",
+            "compact": true,
+            "keyColor": "magenta"
+        },
+        {
+            "type": "publicip",
+            "key": "WAN IP   ➜",
+            "compact": true,
+            "keyColor": "magenta"
+        },
+        "break",
+        "colors"
+    ]
+}
