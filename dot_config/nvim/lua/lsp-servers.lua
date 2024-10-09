@@ -3,6 +3,7 @@
 -- packages can be found at https://mason-registry.dev/registry/list.
 return {
 	"clangd",
+	"jdtls",
 	"lua_ls",
 	"rust_analyzer",
 }

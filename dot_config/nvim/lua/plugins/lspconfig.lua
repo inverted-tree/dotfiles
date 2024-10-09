@@ -96,6 +96,16 @@ return {
 					capabilities = capabilities,
 				})
 			end,
+
+			["jdtls"] = function()
+				lspconfig["jdtls"].setup({
+					cmd = { "jdtls" },
+					settings = {
+						java = {},
+					},
+					root_dir = lspconfig.util.root_pattern(".git", "pom.xml", "build.gradle"),
+				})
+			end,
 		})
 	end,
 }
