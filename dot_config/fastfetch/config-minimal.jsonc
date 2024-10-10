@@ -1,0 +1,61 @@
+
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+		"source": "┏━┓┏━┓━━━━━━━━━┏━━━┓┏━━━┓\n┃┃┗┛┃┃━━━━━━━━━┃┏━┓┃┃┏━┓┃\n┃┏┓┏┓┃┏━━┓━┏━━┓┃┃━┃┃┃┗━━┓\n┃┃┃┃┃┃┗━┓┃━┃┏━┛┃┃━┃┃┗━━┓┃\n┃┃┃┃┃┃┃┗┛┗┓┃┗━┓┃┗━┛┃┃┗━┛┃\n┗┛┗┛┗┛┗━━━┛┗━━┛┗━━━┛┗━━━┛",
+		"type": "data",
+		"color": {
+			"1": "cyan"
+		},
+		"padding": {
+			"top": 2
+		}
+
+    },
+	"display": {
+        "separator": " "
+    },
+    "modules": [
+        {
+            "type": "title"
+        },
+        {
+            "type": "custom",
+            "format": "────────────────────────"
+        },
+        {
+            "type": "shell",
+            "key": "SHELL    ➜",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "packages",
+            "key": "PACKAGES ➜",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "host",
+            "key": "HOST     ➜",
+            "keyColor": "blue"
+        },
+        {
+            "type": "uptime",
+            "key": "UPTIME   ➜",
+            "keyColor": "blue"
+        },
+        {
+            "type": "localip",
+            "key": "LAN IP   ➜",
+            "compact": true,
+            "keyColor": "magenta"
+        },
+        {
+            "type": "publicip",
+            "key": "WAN IP   ➜",
+            "compact": true,
+            "keyColor": "magenta"
+        },
+        "break",
+        "colors"
+    ]
+}
