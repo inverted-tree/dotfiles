@@ -2,16 +2,15 @@
 
 This repository contains the dotfiles for the following programs:
 - btop
-- Fastfetch
-- NeoVim
-- Obsidian
-- Starship
-- Tmux
-- Wezterm
-- Zsh
+- fastfetch
+- neovim
+- starship
+- tmux
+- wezterm
+- zsh
 
 To get up and running install [chezmoi](https://www.chezmoi.io/install/) and then execute:
 
-```bash
+```sh
 chezmoi init --apply git@github.com:inverted-tree/dotfiles.git
 ```
