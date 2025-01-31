@@ -1,0 +1,8 @@
+# Tweaks to ghostty
+theme = rose-pine
+font-size = 18
+window-padding-x = 10
+window-padding-y = 10
+window-decoration = none
+background-opacity = 0.45
+background-blur = true
