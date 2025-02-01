@@ -72,6 +72,7 @@ eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="$HOME/.ghcup/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
