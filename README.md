@@ -13,5 +13,8 @@ These dotfiles and configuration scripts are meant as a way to automatically set
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/inverted-tree/dotfiles/refs/heads/main/bootstrap.sh)"
 ```
 
+# Styling
+As of now, not much styling is available. Wallpapers can be found in [this](/wallpaper/) directory.
+
 > [!CAUTION]
 > I try my best to always have this remote repository in a clean and consistent state. However, I do not guarantee such a thing and thus, consider this a warning that some scripts / configuration-files might break (parts of) your system.
