@@ -1,0 +1,83 @@
+{{ if eq .chezmoi.os "darwin" -}}
+
+#!/bin/bash
+
+FORMULAE=(
+	btop
+	chezmoi
+	cmake
+	cmatrix
+	curl
+	emacs
+	fastfetch
+	flac
+	flang
+	fmt
+	fzf
+	gcc
+	ghcup
+	jdtls
+	lazygit
+	llvm
+	lua
+	luajit
+	meson
+	neovim
+	nmap
+	ollama
+	openjdk
+	python
+	qemu
+	ripgrep
+	rustup
+	starship
+	tmux
+	tree-sitter
+	wget
+	xmake
+	zsh-autosuggestions
+	zsh-fast-syntax-highlighting
+	zoxide
+)
+
+CASKS=(
+	balenaetcher
+	cinebench
+	discord
+	docker
+	eqmac
+	font-jetbrains-mono-nerd-font
+	ghostty
+	gimp
+	libreoffice
+	mediahuman-audio-converter
+	obs
+	obsidian
+	plexamp
+	proton-mail-bridge
+	protonvpn
+	qbittorrent
+	raycast
+	signal
+	spotify
+	steam
+	tailscale
+	thunderbird
+	vlc
+	vscodium
+	wezterm
+	whatsapp
+	wireshark
+	zen-browser
+	zoom
+)
+
+## Install brew formulae
+echo "Installing Brew Formulae..."
+brew install --formulae "${FORMULAE[@]}"
+
+## Install brew casks
+echo "Installing Brew Casks..."
+brew install --cask "${CASKS[@]}"
+
+{{ end -}}
