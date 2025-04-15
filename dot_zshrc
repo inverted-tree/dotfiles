@@ -76,3 +76,4 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="$HOME/.ghcup/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/Projects/jonin:$PATH"
