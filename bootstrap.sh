@@ -24,5 +24,42 @@ if [[ ${OSTYPE//[0-9.]/} == "darwin" ]]; then
 	brew install "chezmoi"
 
 	chezmoi init --apply $GITHUB_USERNAME
+
+elif [[ ${OSTYPE} == "linux-gnu" ]]; then
+	# Only Arch (based) Linux distros are supported
+	if command -v pacman --version > /dev/null 2>&1; then
+		# Do a full system upgrade before installing any new packages
+		sudo pacman -Syuq --noconfirm
+		if command -v yay --version > /dev/null 2>&1; then
+			echo "Yay, yay is already installed"
+		else
+			if pacman -Ss "^yay\$" > /dev/null 2>&1; then
+				echo "Yay is available via pacman, installing from there"
+				sudo pacman -Sq --noconfirm yay
+			else
+				echo "Installing yay as the AUR helper"
+				sudo pacman -S --needed git base-devel
+				git clone https://aur.archlinux.org/yay.git
+				cd yay
+				makepkg -si
+			fi
+			yay -Yq --noconfirm --gendb
+			yay -Syuq --noconfirm --devel
+			yay -Yq --noconfirm --devel --save
+		fi
+
+		# Install the dotfile manager
+		yay -Sq --noconfirm chezmoi
+
+		chezmoi init --apply $GITHUB_USERNAME
+
+	else
+		echo "Can't find the 'pacman' package manager. This only works on Arch (based) Linux distributions"
+		exit 1
+	fi
+
+else
+	echo "Unsupported OS type '${OSTYPE}'"
+	exit 1
 fi
 
