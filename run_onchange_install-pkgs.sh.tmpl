@@ -80,4 +80,43 @@ brew install --formulae "${FORMULAE[@]}"
 echo "Installing Brew Casks..."
 brew install --cask "${CASKS[@]}"
 
+{{ else if eq .chezmoi.os "linux" -}}
+
+#!/bin/bash
+
+PKGS=(
+	btop
+	chezmoi
+	docker
+	emacs
+	fastfetch
+	fzf
+	ghostty
+	lazygit
+	lua
+	luajit
+	meson
+	neovim
+	nmap
+	openjdk
+	python
+	qemu
+	ripgrep
+	rustup
+	starship
+	tmux
+	tree-sitter
+	ttf-jetbrains-mono
+	xmake
+	zsh-autosuggestions
+	zsh-fast-syntax-highlighting
+	zoxide
+)
+
+## Install (AUR) packages
+echo "Performing a full system upgrade"
+yay -Syuq --noconfirm
+echo "Installing packages..."
+yay -Sq --noconfirm "${PKGS[@]}"
+
 {{ end -}}
