@@ -119,4 +119,13 @@ yay -Syuq --noconfirm
 echo "Installing packages..."
 yay -Sq --noconfirm "${PKGS[@]}"
 
+if [ -x /bin/zsh ]; then
+	if [[ "$SHELL" != "/bin/zsh" ]]; then
+		echo "Changing the shell from $SHELL to /bin/zsh"
+		chsh -s /bin/zsh
+	fi
+else
+	echo "[Error] Cannot find /bin/zsh. Won't change the default shell"
+fi
+
 {{ end -}}
