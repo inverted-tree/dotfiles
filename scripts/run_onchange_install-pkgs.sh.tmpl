@@ -35,6 +35,8 @@ FORMULAE=(
 	tree-sitter
 	wget
 	xmake
+	"zathura --with synctex"
+	zathura-mupdf
 	zsh-autosuggestions
 	zsh-fast-syntax-highlighting
 	zoxide
@@ -71,6 +73,10 @@ CASKS=(
 	zen-browser
 	zoom
 )
+
+## Tap required repositories
+echo "Tapping required repositories"
+brew tap homebrew-zathura/zathura
 
 ## Install brew formulae
 echo "Installing Brew Formulae..."
