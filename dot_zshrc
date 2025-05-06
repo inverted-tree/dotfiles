@@ -61,11 +61,12 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
-alias ls='ls --color'
-alias la='ls -la --color'
-alias v='nvim'
 alias c='clear'
 alias emacs='emacs -nw'
+alias la='ls -la --color'
+alias lg='lazygit'
+alias ls='ls --color'
+alias v='nvim'
 
 # Set the prompt to the starship prompt
 eval "$(starship init zsh)"
