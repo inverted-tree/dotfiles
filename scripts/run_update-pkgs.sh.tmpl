@@ -1,0 +1,17 @@
+{{ if eq .chezmoi.os "darwin" -}}
+
+#!/bin/bash
+
+echo "Upgrading all system packages"
+
+brew update -q
+brew upgrade -q
+
+{{ else if eq .chezmoi.os "linux" -}}
+
+#!/bin/bash
+
+echo "Performing a full system upgrade"
+yay -Syuq --noconfirm
+
+{{ end -}}
