@@ -138,10 +138,26 @@ if command -v pacman --version > /dev/null 2>&1; then
 	fi
 
 elif command -v nix --help > /dev/null 2>&1; then
-	echo "Performing a full nix system upgrade"
-	read -rp "Enter the hostname (flake target): " HOST
-	sudo nixos-rebuild switch --flake "/etc/nixos#$HOST" --upgrade
+	# Get the current generation number (requires sudo)
+	current_gen=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | \
+		grep current | awk '{print $1}')
 
+	# Get the date of the current system generation (also requires sudo)
+	last_upgrade_date=$(sudo nix-env --profile /nix/var/nix/profiles/system --list-generations | \
+		awk -v gen="$current_gen" '$1 == gen {print $2}')
+
+	# Get today's date
+	today=$(date +%Y-%m-%d)
+
+	if [[ "$last_upgrade_date" == "$today" ]]; then
+		echo "System was already upgraded today ($today). Skipping upgrade."
+
+	else
+		echo "Last upgrade was on $last_upgrade_date. Proceeding with upgrade..."
+		read -rp "Enter the hostname (flake target): " HOST
+		sudo nixos-rebuild switch --flake "/etc/nixos#$HOST" --upgrade
+
+	fi
 fi
 
 {{ end -}}
