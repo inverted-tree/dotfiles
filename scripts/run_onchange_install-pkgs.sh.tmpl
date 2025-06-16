@@ -92,48 +92,56 @@ brew install --cask "${CASKS[@]}"
 
 #!/bin/bash
 
-PKGS=(
-	btop
-	chezmoi
-	docker
-	emacs
-	fastfetch
-	fzf
-	ghostty
-	lazygit
-	lua
-	luajit
-	meson
-	neovim
-	nmap
-	openjdk
-	python
-	qemu
-	ripgrep
-	rustup
-	starship
-	tmux
-	tree-sitter
-	ttf-jetbrains-mono
-	xmake
-	zsh-autosuggestions
-	zsh-fast-syntax-highlighting
-	zoxide
-)
+if command -v pacman --version > /dev/null 2>&1; then
+	PKGS=(
+		btop
+		chezmoi
+		docker
+		emacs
+		fastfetch
+		fzf
+		ghostty
+		lazygit
+		lua
+		luajit
+		meson
+		neovim
+		nmap
+		openjdk
+		python
+		qemu
+		ripgrep
+		rustup
+		starship
+		tmux
+		tree-sitter
+		ttf-jetbrains-mono
+		xmake
+		zsh-autosuggestions
+		zsh-fast-syntax-highlighting
+		zoxide
+	)
 
-## Install (AUR) packages
-echo "Performing a full system upgrade"
-yay -Syuq --noconfirm
-echo "Installing packages..."
-yay -Sq --noconfirm "${PKGS[@]}"
+	# Install (AUR) packages
+	echo "Performing a full system upgrade"
+	yay -Syuq --noconfirm
+	echo "Installing packages..."
+	yay -Sq --noconfirm "${PKGS[@]}"
 
-if [ -x /bin/zsh ]; then
-	if [[ "$SHELL" != "/bin/zsh" ]]; then
-		echo "Changing the shell from $SHELL to /bin/zsh"
-		chsh -s /bin/zsh
+	if [ -x /bin/zsh ]; then
+		if [[ "$SHELL" != "/bin/zsh" ]]; then
+			echo "Changing the shell from $SHELL to /bin/zsh"
+			chsh -s /bin/zsh
+		fi
+	else
+		echo "[Error] Cannot find /bin/zsh. Won't change the default shell"
 	fi
-else
-	echo "[Error] Cannot find /bin/zsh. Won't change the default shell"
+
+elif command -v nix --help > /dev/null 2>&1; then
+	echo "Performing a full nix system upgrade"
+	read -rp "Enter the hostname (flake target): " HOST
+	sudo nixos-rebuild switch --flake "/etc/nixos#$HOST" --upgrade
+
 fi
 
 {{ end -}}
