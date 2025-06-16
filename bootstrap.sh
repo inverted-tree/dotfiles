@@ -26,7 +26,7 @@ if [[ ${OSTYPE//[0-9.]/} == "darwin" ]]; then
 	chezmoi init --apply $GITHUB_USERNAME
 
 elif [[ ${OSTYPE} == "linux-gnu" ]]; then
-	# Only Arch (based) Linux distros are supported
+	# Arch (based) Linux distros are supported
 	if command -v pacman --version > /dev/null 2>&1; then
 		# Do a full system upgrade before installing any new packages
 		sudo pacman -Syuq --noconfirm
@@ -53,8 +53,13 @@ elif [[ ${OSTYPE} == "linux-gnu" ]]; then
 
 		chezmoi init --apply $GITHUB_USERNAME
 
+	# Nix OS linux is supported
+	elif command -v nix --help > /dev/null 2>&1; then
+		# Since the nix workflow is a bit different, only the dotfiles are pulled
+		chezmoi init --apply $GITHUB_USERNAME
+
 	else
-		echo "Can't find the 'pacman' package manager. This only works on Arch (based) Linux distributions"
+		echo "Can't find the 'pacman' package manager or 'nix' command. This script only works on Arch (based) Linux distributions as well as Nix OS."
 		exit 1
 	fi
 
