@@ -4,15 +4,32 @@
 </div>
 
 > [!IMPORTANT]
-> These config files are tailored to my own systems and workflows. As usual I advise against blindly applying someone else's configurations on your system. Rather, peek into single files and see if you find something you like and build something up from there. The main reason these files are in a public repository is such that I can quickly apply them to any new system and have a familiar environment within seconds.
+> These config files are tailored to my workflow. The main reason i threw them in a public repository is so I can quickly apply them to any system and have a familiar environment within seconds. Go ahead and break your system, I know you want to.
 
-# Installation
-These dotfiles and configuration scripts are meant as a way to automatically set up my systems. All dotfile management is based on a tool called [chezmoi](https://www.chezmoi.io/), which will run the scripts to install the software that I need. To bootstrap this process, I wrote a [script](bootstrap.sh) which can be run in a shell to kick off the installation procedure. To get from 0 to 60 just yank the following command and paste it into the terminal:
+The [dotfiles](./dot_config/) and [config scripts](./scripts/) are useful to
+- get a familiar environment on a new system within secons.
+- sync all configurations across existing systems.
+- flex my ricing skills.
+- waste a lot of time that I should have spent programming something useful.
 
+I manage these files with a tool called [chezmoi](https://www.chezmoi.io/), which also runs scripts for defined conditions.[^1][^2] To bootstrap the setup of a completely new system, there is a [script](./bootstrap.sh) that can be curled into an unsuspecting `bash` shell which sets everyting up.
+
+# Bootstrapping a new system
+If you are on a fresh Linux/MacOS installation, this is the way to go:
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/inverted-tree/dotfiles/refs/heads/main/bootstrap.sh)"
 ```
 
-> [!CAUTION]
-> I try my best to always have this remote repository in a clean and consistent state. However, I do not guarantee such a thing and thus, consider this a warning that some scripts / configuration-files might break (parts of) your system and or configuration.
+# Applying the config to an existing system
+If you are on an existing system, the first option should not install anything that is already there, but if chezmoi is already installed, to just apply the dotfiles use the following snippet:
+```sh
+chezmoi init --apply https://github.com/inverted-tree/dotfiles.git --exclude=scripts
+```
 
+---
+
+> [!CAUTION]
+> No guarantee this will not completely nuke your system, but hey, it works on my machine.
+
+[^1]: Such as installing programs with the OS's native package manager.
+[^2]: Am I hiding a logic bomb?
