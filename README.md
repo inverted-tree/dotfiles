@@ -14,6 +14,9 @@ The [dotfiles](./dot_config/) and [config scripts](./scripts/) are useful to
 
 I manage these files with a tool called [chezmoi](https://www.chezmoi.io/), which also runs scripts for defined conditions.[^1][^2] To bootstrap the setup of a completely new system, there is a [script](./bootstrap.sh) that can be curled into an unsuspecting `bash` shell which sets everyting up.
 
+> [!NOTE]
+> For NixOS systems check out my [nix configurations](https://github.com/inverted-tree/nixos-config). First, build the system and then run the bootsrap scirpt afterwards. All scripts are OS/distro aware and run accordingly.
+
 # Bootstrapping a new system
 If you are on a fresh Linux/MacOS installation, this is the way to go:
 ```sh
