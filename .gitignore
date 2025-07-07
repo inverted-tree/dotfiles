@@ -1,1 +1,6 @@
+# MacOS
+
 .DS_Store
+
+# Lockfiles
+dot_config/nvim/lazy-lock.json
