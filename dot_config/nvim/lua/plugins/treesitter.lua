@@ -1,4 +1,42 @@
 -- Incremental parsing library
+
+-- List of parsers that will be installed automatically
+local parsers = {
+	"bash",
+	"c",
+	"cpp",
+	"css",
+	"csv",
+	"cuda",
+	"diff",
+	"dockerfile",
+	"doxygen",
+	"forth",
+	"fortran",
+	"go",
+	"haskell",
+	"html",
+	"java",
+	"json",
+	"latex",
+	"lua",
+	"make",
+	"markdown",
+	"markdown_inline",
+	"ninja",
+	"nix",
+	"python",
+	"rust",
+	"scala",
+	"sql",
+	"toml",
+	"typst",
+	"vim",
+	"vimdoc",
+	"yaml",
+	"zathurarc",
+}
+
 return {
 	"nvim-treesitter/nvim-treesitter",
 	event = {
@@ -10,7 +48,7 @@ return {
 		"windwp/nvim-ts-autotag",
 	},
 	opts = {
-		ensure_installed = require("options.ts-parsers"),
+		ensure_installed = parsers,
 		sync_install = false,
 		auto_install = true,
 		ignore_install = {},
