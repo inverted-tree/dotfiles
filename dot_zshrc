@@ -67,14 +67,25 @@ alias la='ls -la --color'
 alias lg='lazygit'
 alias ls='ls --color'
 alias v='nvim'
+alias vim='nvim -u ~/.config/vim/vimrc.lua'
 
 # Set the prompt to the starship prompt
 eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
+# Load atuin
+if command -v atuin &>/dev/null; then
+    eval "$(atuin init zsh)"
+fi
+
+# Add binaries to the PATH ev
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="$HOME/.ghcup/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/Projects/jonin:$PATH"
+
+# Created by `pipx` on 2025-05-27 14:45:58
+export PATH="$PATH:/Users/lukas/.local/bin"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
