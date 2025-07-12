@@ -1,15 +1,25 @@
 -- Apply formatting based on file type using external formatters
+local function get_uname()
+	local uname = vim.loop.os_uname()
+	return uname.machine .. "-" .. uname.sysname
+end
+
 local function get_formatters_by_ft()
 	-- Make sure the first element in the table is the formatters name
-	return {
+	local fmtrs = {
 		c = { "clang-format" },
 		cpp = { "clang-format" },
 		lua = { "stylua" },
-		nix = { "nixfmt" },
 		python = { "ruff_format" },
 		rust = { "rustfmt" },
 		typst = { "prettypst" }, -- Requires cargo to install
 	}
+
+	if get_uname() == "x86_64-Linux" then
+		fmtrs["nix"] = { "nixfmt" }
+	end
+
+	return fmtrs
 end
 
 -- Register the formatters in a global table so they can be installed by mason-tool-installer
