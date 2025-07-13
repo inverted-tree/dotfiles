@@ -24,15 +24,22 @@ local get_os_name = function()
 end
 
 config.font = wezterm.font("JetBrainsMono Nerd Font")
-config.font_size = 18
 
 config.color_scheme = "rose-pine"
 
-config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.45
 
 if get_os_name() == "macos" then
+	config.window_decorations = "RESIZE"
 	config.macos_window_background_blur = 20
+	config.font_size = 18
+end
+if get_os_name() == "linux" then
+	config.window_decorations = "NONE"
+	config.enable_wayland = false
+	--	config.kde_window_background_blur = true -- This does only work for wayland native windows, which wezterm crashes in with nvidia drivers...
+	config.window_background_opacity = 0.85 -- without background blur this is the lowest values that is usable
+	config.font_size = 14
 end
 
 config.enable_tab_bar = true
