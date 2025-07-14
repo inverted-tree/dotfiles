@@ -38,7 +38,7 @@ end
 
 return {
 	"stevearc/conform.nvim",
-	event = { "BufWritePre" },
+	event = { "BufWritePre", "BufNewFile" },
 	cmd = { "ConformInfo" },
 	keys = {
 		{
