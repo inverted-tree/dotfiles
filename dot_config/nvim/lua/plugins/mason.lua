@@ -1,4 +1,11 @@
 -- Automatically install LSP servers, linters and formatters
+local function merge(A, B)
+	for k, v in pairs(B) do
+		A[k] = v
+	end
+	return A
+end
+
 return {
 	"williamboman/mason-lspconfig.nvim",
 	dependencies = {
@@ -21,7 +28,7 @@ return {
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			opts = {
 				-- The tools are stored in a global table 'tools' from within the module that requires them to be installed
-				ensure_installed = _G.tools.formatters(),
+				ensure_installed = merge(_G.tools.formatters(), _G.tools.linters()),
 				-- debounce_hours = 8,
 			},
 		},
