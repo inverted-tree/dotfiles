@@ -1,4 +1,11 @@
--- Configure the 'wezterm' terminal emulator
+--                _
+--  _ _ _ ___ ___| |_ ___ ___ _____
+-- | | | | -_|- _|  _| -_|  _|     |
+-- |_____|___|___| | |___|_| |_|_|_|
+--               |__|
+--
+-- Configuration of the 'Wezterm' terminal emulator (https://wezterm.org/)
+
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
@@ -24,9 +31,7 @@ local get_os_name = function()
 end
 
 config.font = wezterm.font("JetBrainsMono Nerd Font")
-
 config.color_scheme = "rose-pine"
-
 config.window_background_opacity = 0.45
 
 if get_os_name() == "macos" then
@@ -42,21 +47,53 @@ if get_os_name() == "linux" then
 	config.font_size = 14
 end
 
+-- Replace the default bar with a plugin bar
 config.enable_tab_bar = true
-local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
+local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm") -- This needs to be set _after_ the coloscheme
 bar.apply_to_config(config, {
+	padding = { right = 2 },
 	separator = {
-		space = 1,
+		space = 0,
 		left_icon = ":",
-		right_icon = "",
-		field_icon = wezterm.nerdfonts.indent_line,
+		right_icon = " ",
+		field_icon = " │ ",
 	},
 	modules = {
 		pane = { enabled = false },
 		workspace = { enabled = false },
 		hostname = { enabled = false },
-		clock = { enabled = false },
+		username = { icon = wezterm.nerdfonts.fa_user_o },
+		clock = { enabled = true, icon = wezterm.nerdfonts.md_clock_outline },
 	},
 })
+
+-- Set some non-default key combinations
+config.keys = {
+	{
+		key = "m",
+		mods = "SUPER",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "\\",
+		mods = "CMD",
+		action = wezterm.action.SplitHorizontal({ args = { "zsh" } }),
+	},
+	{
+		key = "-",
+		mods = "CMD",
+		action = wezterm.action.SplitVertical({ args = { "zsh" } }),
+	},
+	{
+		key = "s",
+		mods = "CMD",
+		action = wezterm.action.PaneSelect({ mode = "Activate" }),
+	},
+	{
+		key = "w",
+		mods = "CMD",
+		action = wezterm.action.CloseCurrentPane({ confirm = false }),
+	},
+}
 
 return config
