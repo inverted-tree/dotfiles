@@ -1,3 +1,8 @@
+--      _
+--  _ _|_|_____ ___ ___
+-- | | | |     |  _|  _|
+--  \_/|_|_|_|_|_| |___|
+--
 -- A lightweight vimrc as an alternative to the more IDE-like config in ~/.config/nvim
 
 -- Basic options
@@ -25,6 +30,32 @@ vim.opt.spell = true
 vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
 
+-- Highlight the yanked text selection
+vim.api.nvim_create_augroup("HighlightYank", {})
+vim.api.nvim_create_autocmd("TextYankPost", {
+	pattern = "*",
+	group = "HighlightYank",
+	desc = "Highlight selection on yank",
+	callback = function()
+		vim.highlight.on_yank({ timeout = 200, visual = true })
+	end,
+})
+
+-- Disable cursorline on non-active buffers
+vim.api.nvim_create_augroup("ActiveCursorline", {})
+vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+	group = "ActiveCursorline",
+	callback = function()
+		vim.opt_local.cursorline = true
+	end,
+})
+vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
+	group = "ActiveCursorline",
+	callback = function()
+		vim.opt_local.cursorline = false
+	end,
+})
+
 -- Auto-format specific filetypes on save if the formatters are available
 vim.api.nvim_create_augroup("AutoFormat", {})
 
@@ -34,7 +65,10 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	group = "AutoFormat",
 	callback = function()
 		if vim.fn.executable("stylua") == 1 then
-			vim.cmd("silent !stylua %")
+			if vim.fn.expand("%:t") == "xmake.lua" then
+				return
+			end
+			vim.cmd([[silent !stylua %]])
 		end
 	end,
 })
