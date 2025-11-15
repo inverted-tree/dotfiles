@@ -30,6 +30,16 @@ vim.opt.spell = true
 vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
 
+-- Replace grep with rg if available
+if vim.fn.executable("rg") == 1 then
+	vim.opt.grepprg = "rg --vimgrep --smart-case --hidden"
+	vim.opt.grepformat = "%f:%l:%c:%m"
+
+	vim.api.nvim_create_user_command("Rg", function(opts)
+		vim.cmd("grep " .. opts.args)
+	end, { nargs = "+" })
+end
+
 -- Highlight the yanked text selection
 vim.api.nvim_create_augroup("HighlightYank", {})
 vim.api.nvim_create_autocmd("TextYankPost", {
