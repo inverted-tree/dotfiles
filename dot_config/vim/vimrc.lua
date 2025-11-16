@@ -30,6 +30,14 @@ vim.opt.spell = true
 vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
 
+-- Netrw options
+vim.g.netrw_keepdir = 0
+vim.g.netrw_winsize = 30
+vim.g.netrw_list_hide = "(^|ss)\zs.S+"
+vim.g.netrw_banner = 0
+vim.g.netrw_localcopydircmd = "cp -r"
+vim.api.nvim_set_hl(0, "netrwMarkFile", { link = "Search" })
+
 -- Replace grep with rg if available
 if vim.fn.executable("rg") == 1 then
 	vim.opt.grepprg = "rg --vimgrep --smart-case --hidden"

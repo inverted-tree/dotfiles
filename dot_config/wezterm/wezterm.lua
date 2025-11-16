@@ -49,9 +49,11 @@ end
 
 -- Replace the default bar with a plugin bar
 config.enable_tab_bar = true
-local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm") -- This needs to be set _after_ the coloscheme
+
+-- wezterm.plugin.require("https://github.com/inverted-tree/bar.wezterm")
+-- local bar = wezterm.plugin.require("https://github.com/inverted-tree/bar.wezterm") -- This needs to be set _after_ the coloscheme
+local bar = wezterm.plugin.require("file:///Users/lukas/Projects/bar.wezterm")
 bar.apply_to_config(config, {
-	padding = { right = 2 },
 	separator = {
 		space = 0,
 		left_icon = ":",
@@ -62,8 +64,9 @@ bar.apply_to_config(config, {
 		pane = { enabled = false },
 		workspace = { enabled = false },
 		hostname = { enabled = false },
-		username = { icon = wezterm.nerdfonts.fa_user_o },
-		clock = { enabled = true, icon = wezterm.nerdfonts.md_clock_outline },
+		username = { icon = wezterm.nerdfonts.fa_user_o, weight = 2 },
+		clock = { enabled = true, icon = wezterm.nerdfonts.md_clock_outline, weight = 3 },
+		cwd = { weight = 1 },
 	},
 })
 
