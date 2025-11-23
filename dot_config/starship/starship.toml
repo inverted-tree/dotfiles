@@ -1,7 +1,14 @@
-# Configure the prompt
+#      _       _ _                          _
+#  ___| |_ ___| | |   ___ ___ ___ _____ ___| |_
+# |_ -|   | -_| | |  | . |  _| . |     | . |  _|
+# |___|_|_|___|_|_|  |  _|_| |___|_|_|_|  _| |
+#                    |_|               |_| |__|
+# ──────────────────────────────────────────────────────────────────────────────
+# Changes the default shell prompt to something a bit nicer.
+
 [character]
-success_symbol = '[➜](bold green)'
-error_symbol   = '[✕](bold red)'
+success_symbol = '[\$](bold green)'
+error_symbol   = '[\$](bold red)'
 
 [directory]
 read_only = " (read only)"
@@ -14,4 +21,4 @@ only_detached = false
 disabled = false
 
 [hostname]
-ssh_symbol = "ssh@"
+ssh_symbol = "⇄ "
