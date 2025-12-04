@@ -22,3 +22,9 @@ disabled = false
 
 [hostname]
 ssh_symbol = "⇄ "
+
+[jobs]
+number_threshold = 1
+format = '[$symbol]($style) '
+symbol = '\[+$number\]'
+style = 'bold yellow'
