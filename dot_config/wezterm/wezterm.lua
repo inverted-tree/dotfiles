@@ -34,6 +34,18 @@ config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.color_scheme = "rose-pine"
 config.window_background_opacity = 0.45
 
+wezterm.on("toggle-opacity", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	if not overrides.window_background_opacity then
+		-- if no override is setup, override the default opacity value with 1.0
+		overrides.window_background_opacity = 1.0
+	else
+		-- if there is an override, make it nil so the opacity goes back to the default
+		overrides.window_background_opacity = nil
+	end
+	window:set_config_overrides(overrides)
+end)
+
 if get_os_name() == "macos" then
 	config.window_decorations = "RESIZE"
 	config.macos_window_background_blur = 20
@@ -96,6 +108,11 @@ config.keys = {
 		key = "w",
 		mods = "CMD",
 		action = wezterm.action.CloseCurrentPane({ confirm = false }),
+	},
+	{
+		key = "o",
+		mods = "CTRL",
+		action = wezterm.action.EmitEvent("toggle-opacity"),
 	},
 }
 
