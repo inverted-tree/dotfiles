@@ -17,11 +17,43 @@
   },
   "vim_mode": true,
   "ui_font_size": 16,
+  "ui_font_family": "IBM Plex Sans",
+  "buffer_font_family": "IBM Plex Mono",
   "buffer_font_size": 15,
+  "extend_comment_on_newline": false,
   "theme": {
     "mode": "system",
     "light": "Ayu Light",
     "dark": "Tokyo Night Dark",
+  },
+  "title_bar": {
+    "show_onboarding_banner": false,
+    "show_user_menu": false,
+  },
+  "tab_bar": {
+    "show": false,
+  },
+  "toolbar": {
+    "quick_actions": false,
+  },
+  "status_bar": {
+    "experimental.show": false,
+  },
+  "project_panel": {
+    "starts_open": false,
+    "bold_folder_labels": true,
+    "hide_root": true,
+    "hide_gitignore": true,
+    "scrollbar": {
+      "show": "never",
+    },
+  },
+  "scrollbar": {
+    "show": "never",
+  },
+  "gutter": {
+    "min_line_number_digits": 0,
+    "folds": false,
   },
   "lsp": {
     "nixd": {
