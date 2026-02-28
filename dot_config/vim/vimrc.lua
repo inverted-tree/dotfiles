@@ -27,16 +27,42 @@ vim.opt.foldmethod = "manual"
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
 
+-- Styling options
+vim.api.nvim_create_autocmd("ColorScheme", {
+	callback = function()
+		local groups = {
+			"Normal",
+			"NormalNC",
+			"SignColumn",
+			"EndOfBuffer",
+			"NormalFloat",
+			"FloatBorder",
+		}
+		for _, g in ipairs(groups) do
+			vim.api.nvim_set_hl(0, g, { bg = "NONE" })
+		end
+	end,
+})
 vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
+vim.cmd.colorscheme("habamax")
+vim.cmd("set fillchars&") -- Reset fillchars set by colorscheme
+vim.cmd("set formatoptions-=ro") -- Disable comment leader on CR etc.
+
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#5f5f5f", bg = "NONE" })
+vim.api.nvim_set_hl(0, "VertSplit", { fg = "#5f5f5f", bg = "NONE" })
 
 -- Netrw options
 vim.g.netrw_keepdir = 0
 vim.g.netrw_winsize = 30
+-- vim.g.netrw_list_hide = "(^|ss)\zs.S+"
 vim.g.netrw_list_hide = "(^|ss)\zs.S+"
 vim.g.netrw_banner = 0
 vim.g.netrw_localcopydircmd = "cp -r"
 vim.api.nvim_set_hl(0, "netrwMarkFile", { link = "Search" })
+
+-- Auto-yank to system clipboard
+vim.api.nvim_set_option("clipboard", "unnamedplus")
 
 -- Replace grep with rg if available
 if vim.fn.executable("rg") == 1 then
