@@ -1,1 +1,2 @@
-require('plugins.alpha')
+require("plugins.alpha")
+require("plugins.tokyodark")
