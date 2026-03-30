@@ -1,0 +1,12 @@
+{
+  "plugins": {
+    "alpha": {
+      "rev": "a9d8fb72213c8b461e791409e7feabb74eb6ce73",
+      "src": "https://github.com/goolord/alpha-nvim"
+    },
+    "fortune": {
+      "rev": "6b78cecae736dcf69d2f41403c3f6b48e3df326e",
+      "src": "https://github.com/BlakeJC94/alpha-nvim-fortune"
+    }
+  }
+}
