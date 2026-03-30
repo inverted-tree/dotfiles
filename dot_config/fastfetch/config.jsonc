@@ -1,0 +1,86 @@
+{
+    "logo": {
+		"type": "auto"
+	},
+	"display": {
+        "separator": "",
+        "key": {
+            "width": 15
+        }
+    },
+    "modules": [
+		// ── Header ───────────────────────────────────────────────────────────
+		"title",
+		{
+            "type": "custom",
+            "key": "┌───────────┐"
+        },
+		// ── OS ───────────────────────────────────────────────────────────────
+		{
+			"type": "os",
+			"key": "├ OS        :"
+		},
+		{
+			"type": "kernel",
+			"key": "├ Kernel    :"
+		},
+		{
+			"type": "packages",
+			"key": "├ Packages  :"
+		},
+		{
+			"type": "shell",
+			"key": "├ Shell     :"
+		},
+		{
+            "type": "custom",
+            "key": "│           │"
+        },
+		// ── Hardware ─────────────────────────────────────────────────────────
+		{
+            "type": "cpu",
+            "key": "├ CPU       :"
+        },
+		{
+            "type": "gpu",
+            "key": "├ GPU       :"
+        },
+		{
+            "type": "memory",
+            "key": "├ Memory    :"
+        },
+		{
+            "type": "uptime",
+            "key": "├ Uptime    :"
+        },
+		{
+            "type": "custom",
+            "key": "│           │"
+        },
+		// ── Network ──────────────────────────────────────────────────────────
+		{
+			"type": "localip",
+			"key": "├ Local IP  :",
+			"format": "{ipv4}"
+		},
+		{
+			"type": "publicip",
+			"key": "├ Public IP : ",
+			"timeout": 2400
+		},
+		{
+            "type": "custom",
+            "key": "│           │"
+        },
+		// ── Fancy ────────────────────────────────────────────────────────────
+		{
+			"type": "colors",
+			"symbol": "circle",
+			"key": "├ Colors    : "
+		},
+		{
+            "type": "custom",
+            "key": "└───────────┘"
+        }
+	]
+}
